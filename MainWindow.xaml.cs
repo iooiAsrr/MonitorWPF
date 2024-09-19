@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -20,7 +21,12 @@ namespace MonitorWPF
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext= new MainWindowVM();
+            this.DataContext = new MainWindowVM();
         }
+        //Header buttons
+        private void Button_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;
+        //private void Button_Click_1(object sender, RoutedEventArgs e) => this.WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        private void Button_click_2(object sender, RoutedEventArgs e) => this.Close();
+
     }
 }

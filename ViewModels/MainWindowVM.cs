@@ -15,7 +15,6 @@ namespace MonitorWPF.ViewModels
 		/// <summary>
 		/// 监控用户控件
 		/// </summary>
-        
 
 		public UserControl MonitorUC
         {

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MonitorWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Height="495" Width="auto">
+             Height="490" Width="800">
     <Grid Background="green">
             
     </Grid>
