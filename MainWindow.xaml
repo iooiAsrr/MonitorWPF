@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MonitorWPF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Title="监控平台" Height="550" Width="800">
     <!--隐藏头部-->
     <WindowChrome.WindowChrome>
@@ -15,15 +16,15 @@
         <!--背景颜色渐变上到下-->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#1C1C1C" Offset="0"></GradientStop>
+                <GradientStop Color="#1E1E1E" Offset="0.1"></GradientStop>
                 <GradientStop Color="#3E3E42" Offset="0.5"></GradientStop>
                 <GradientStop Color="#3E3E42" Offset="1"></GradientStop>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="495"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="475"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
         <!--头部-->
@@ -35,17 +36,17 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Image Source="Resource/Images/Logo.png" Margin="5,5"></Image>
-                
+
                 <!--第二列-->
-                
+
                 <TextBlock Grid.Column="1" Text="管理系统" Foreground="white" VerticalAlignment="Center" FontSize="15"></TextBlock>
-                
+
                 <!--第三列-->
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent" WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Button Width="40" Content="&#xe656;" Style="{StaticResource OperateBtnStyle}"></Button>
-                    <Button Width="40" Content="&#xe621;" Style="{StaticResource OperateBtnStyle}"></Button>
-                    <Button Width="40" Content="&#xe636;" Style="{StaticResource OperateBtnStyle}"></Button>
+                    <Button Click="Button_Click" Width="40" Content="&#xe624;" Style="{StaticResource OperateBtnStyle}"></Button>
+                    <!--<Button Click="Button_Click_1" Width="40" Content="&#xe621;" Style="{StaticResource OperateBtnStyle}"></Button>-->
+                    <Button Click="Button_click_2" Width="40" Content="&#xe609;" Style="{StaticResource OperateBtnStyle}"></Button>
                 </StackPanel>
             </Grid>
 
@@ -55,10 +56,10 @@
         <!--尾部-->
         <Border Grid.Row="2" BorderThickness="0,1,0,0" BorderBrush="White">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="版权所有：Asrr" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="版权所有：Asrr" Foreground="white" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </Border>
 
