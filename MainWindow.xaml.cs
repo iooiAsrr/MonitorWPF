@@ -21,7 +21,7 @@ namespace MonitorWPF
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM();
+            DataContext = new MainWindowVM();
         }
         //Header buttons
         private void Button_Click(object sender, RoutedEventArgs e) => this.WindowState = WindowState.Minimized;

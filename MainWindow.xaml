@@ -16,7 +16,7 @@
         <!--背景颜色渐变上到下-->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#1C1C1C" Offset="0"></GradientStop>
+                <GradientStop Color="#1E1E1E" Offset="0.1"></GradientStop>
                 <GradientStop Color="#3E3E42" Offset="0.5"></GradientStop>
                 <GradientStop Color="#3E3E42" Offset="1"></GradientStop>
             </LinearGradientBrush>
@@ -44,9 +44,9 @@
                 <!--第三列-->
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent" WindowChrome.IsHitTestVisibleInChrome="True">
-                    <Button Click="Button_Click" Width="40" Content="&#xe656;" Style="{StaticResource OperateBtnStyle}"></Button>
+                    <Button Click="Button_Click" Width="40" Content="&#xe624;" Style="{StaticResource OperateBtnStyle}"></Button>
                     <!--<Button Click="Button_Click_1" Width="40" Content="&#xe621;" Style="{StaticResource OperateBtnStyle}"></Button>-->
-                    <Button Click="Button_click_2" Width="40" Content="&#xe636;" Style="{StaticResource OperateBtnStyle}"></Button>
+                    <Button Click="Button_click_2" Width="40" Content="&#xe609;" Style="{StaticResource OperateBtnStyle}"></Button>
                 </StackPanel>
             </Grid>
 

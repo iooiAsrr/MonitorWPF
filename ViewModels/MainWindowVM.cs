@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MonitorWPF.Models;
+using MonitorWPF.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,7 +13,23 @@ namespace MonitorWPF.ViewModels
     class MainWindowVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        private UserControl _MonitorUC;
+        public MainWindowVM()
+        {
+            #region 初始化环境监控数据
+            EnvironmentList = new List<EnvironmentModel>()
+            {
+                new EnvironmentModel(){EnItemName="温度",EnItemValue="26℃"},
+                new EnvironmentModel(){EnItemName="湿度",EnItemValue="50%"},
+                new EnvironmentModel(){EnItemName="气压",EnItemValue="1013hPa"},
+                new EnvironmentModel(){EnItemName="风速",EnItemValue="2m/s"},
+                new EnvironmentModel(){EnItemName="风向",EnItemValue="东南风"},
+                new EnvironmentModel(){EnItemName="PM2.5",EnItemValue="25ug/m³"},
+                new EnvironmentModel(){EnItemName="噪音",EnItemValue="50dB"},
+            };
+            #endregion
+        }
+
+        private UserControl _MonitorUC = new UserControls.MonitorUC();
         /// <summary>
         /// 监控用户控件
         /// </summary>
@@ -35,6 +53,7 @@ namespace MonitorWPF.ViewModels
                 }
             }
         }
+        #region 时间日期
         //时间
         public string TimeStr
         {
@@ -44,7 +63,8 @@ namespace MonitorWPF.ViewModels
         {
             get => DateTime.Now.ToString("yyyy-MM-dd");
         }
-
+        #endregion
+        #region 产能计数
         public string WeekDayStr
         {
             get
@@ -67,7 +87,7 @@ namespace MonitorWPF.ViewModels
                 }
             }
         }
-        private string _ProductCount = "9999";
+        private string _ProductCount = "9453";
 
         public string ProductCount
         {
@@ -80,7 +100,8 @@ namespace MonitorWPF.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("ProductCount"));
                 }
             }
-        }private string _BadCount = "0132";
+        }
+        private string _BadCount = "0132";
 
         public string BadCount
         {
@@ -94,6 +115,24 @@ namespace MonitorWPF.ViewModels
                 }
             }
         }
-
+        #endregion
+        #region 环境监控数据
+        private List<EnvironmentModel> _EnvironmentList;
+        public List<EnvironmentModel> EnvironmentList
+        {
+            get
+            {
+                return _EnvironmentList;
+            }
+            set
+            {
+                _EnvironmentList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("EnvironmentList"));
+                }
+            }
+        }
+        #endregion
     }
 }
