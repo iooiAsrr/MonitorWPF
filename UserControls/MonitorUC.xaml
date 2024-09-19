@@ -6,7 +6,63 @@
              xmlns:local="clr-namespace:MonitorWPF.UserControls"
              mc:Ignorable="d" 
              Height="490" Width="800">
-    <Grid Background="green">
-            
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                <TextBlock Margin="10,0,10,0" Foreground="White" FontSize="30" VerticalAlignment="Center" Text="{Binding TimeStr}" FontFamily="../Resource/Fonts/#Digital Display"></TextBlock>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Margin="0,0,0,10" Foreground="White" FontSize="10" VerticalAlignment="Center" Text="{Binding DateStr}" FontFamily="../Resource/Fonts/#Digital Display"></TextBlock>
+                    <TextBlock Foreground="White" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding WeekDayStr}" FontFamily="../Resource/Fonts/#Digital Display"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <DataTemplate x:Key="machineCount">
+                        <Border Width="15" Height="25" Background="#1E1E1E" Margin="2,0">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                FontSize="16" Foreground="White">
+                            </TextBlock>
+                        </Border>
+                    </DataTemplate>
+                </StackPanel.Resources>
+                <TextBlock Foreground="White" FontSize="10" Margin="5,0,5,0" VerticalAlignment="Center" Text="机台&#10;总数">
+                </TextBlock>
+                <ItemsControl ItemsSource="{Binding MachineCount}" ItemTemplate="{StaticResource machineCount}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <TextBlock Foreground="White" FontSize="10" Margin="5,0,5,0" VerticalAlignment="Center" Text="生产&#10;总数">
+                </TextBlock>
+                <ItemsControl ItemsSource="{Binding ProductCount}" ItemTemplate="{StaticResource machineCount}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <TextBlock Foreground="White" FontSize="10" Margin="5,0,5,0" VerticalAlignment="Center" Text="损坏&#10;总数">
+                </TextBlock>
+                <ItemsControl ItemsSource="{Binding BadCount}" ItemTemplate="{StaticResource machineCount}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>
