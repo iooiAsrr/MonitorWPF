@@ -35,7 +35,7 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image Source="Resource/Images/Logo.png" Margin="5,5"></Image>
+                <Image Source="Resource/Images/github.png" Margin="5,5"></Image>
 
                 <!--第二列-->
 

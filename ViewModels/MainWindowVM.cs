@@ -27,6 +27,27 @@ namespace MonitorWPF.ViewModels
                 new EnvironmentModel(){EnItemName="噪音",EnItemValue="50dB"},
             };
             #endregion
+            #region 初始化报警信息
+            AlarmList = new List<AlarmModel>()
+            {
+                new AlarmModel(){AlarmTime="07-01 12:00:00",AlarmContent="温度过高",AlarmLevel="严重"},
+                new AlarmModel(){AlarmTime="07-01 12:00:00",AlarmContent="湿度过高",AlarmLevel="严重"},
+                new AlarmModel(){AlarmTime="07-01 12:00:00",AlarmContent="气压过高",AlarmLevel="严重"},
+                new AlarmModel(){AlarmTime="07-01 12:00:00",AlarmContent="风速过高",AlarmLevel="严重"},
+                new AlarmModel(){AlarmTime="07-01 12:00:00",AlarmContent="PM2.5过高",AlarmLevel="严重"},
+                new AlarmModel(){AlarmTime="07-01 12:00:00",AlarmContent="噪音过高",AlarmLevel="严重"},
+            };
+            #endregion
+            #region 初始化设备列表
+            DeviceList = new List<DeviceModel>()
+            {
+                new DeviceModel(){DeviceItem="电压",Value="220V"},
+                new DeviceModel(){DeviceItem="电流",Value="2A"},
+                new DeviceModel(){DeviceItem="温度",Value="48"},
+                new DeviceModel(){DeviceItem="压力",Value="84%"},
+                new DeviceModel(){DeviceItem="转速",Value="4800"},
+            };
+            #endregion
         }
 
         private UserControl _MonitorUC = new UserControls.MonitorUC();
@@ -133,6 +154,40 @@ namespace MonitorWPF.ViewModels
                 }
             }
         }
+        #endregion
+        #region 报警信息
+        private List<AlarmModel> _AlarmList;
+
+        public List<AlarmModel> AlarmList
+        {
+            get { return _AlarmList; }
+            set
+            {
+                _AlarmList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("AlarmList"));
+                }
+            }
+        }
+        #endregion
+        #region 设备列表
+        private List<DeviceModel> _DeviceList;
+
+        public List<DeviceModel> DeviceList
+        {
+            get { return _DeviceList; }
+            set
+            {
+                _DeviceList = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("DeviceList"));
+                }
+            }
+        }
+
+
         #endregion
     }
 }
