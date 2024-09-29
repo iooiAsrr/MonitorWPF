@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="MonitorWPF.UserControls.RingUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MonitorWPF.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="600">
+    <Grid x:Name="LayOut">
+        <Ellipse Width="{Binding ElementName=LayOut,Path=ActualWidth}"  Height="{Binding ElementName=LayOut,Path=ActualHeight}" StrokeThickness="8" Stroke="#22ffffff"></Ellipse>
+        <Path x:Name="path" Stroke="Orange" StrokeThickness="7" StrokeStartLineCap="Round" StrokeEndLineCap="Round"></Path>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
+            <Run Text="{Binding PercentValue,RelativeSource={RelativeSource AncestorType=UserControl}, StringFormat={}{0:#}}"></Run>
+            <Run Text="%"></Run>
+        </TextBlock>
+    </Grid>
+</UserControl>

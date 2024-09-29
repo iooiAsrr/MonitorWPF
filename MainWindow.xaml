@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Title="监控平台" Height="550" Width="800">
+        Title="监控平台" Height="550" Width="850">
     <!--隐藏头部-->
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0"></WindowChrome>
