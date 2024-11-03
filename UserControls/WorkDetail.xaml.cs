@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MonitorWPF.UserControls
 {
@@ -29,7 +17,7 @@ namespace MonitorWPF.UserControls
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             //位移
-            detail.Visibility= Visibility.Visible;
+            detail.Visibility = Visibility.Visible;
             ThicknessAnimation thicknessAnimation = new(new Thickness(0, 50, 0, -50), new Thickness(0, 0, 0, 0), new TimeSpan(0, 0, 0, 0, 500));
             //透明度
             DoubleAnimation doubleAnimation = new(0, 1, new TimeSpan(0, 0, 0, 0, 500));

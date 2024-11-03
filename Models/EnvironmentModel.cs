@@ -1,14 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace MonitorWPF.Models
 {
-    class EnvironmentModel
+    class EnvironmentModel:INotifyPropertyChanged
     {
-        public string EnItemName { get; set; }
-        public string EnItemValue { get; set; }
+        private string _enItemName;
+        private string _enItemValue;
+        public string EnItemName
+        {
+            get=> _enItemName;
+            set { _enItemName = value; OnPropertyChanged(nameof(EnItemName)); }
+        }
+        public string EnItemValue {
+        get=>_enItemValue;
+            set { _enItemValue = value;OnPropertyChanged(nameof(EnItemValue)); }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

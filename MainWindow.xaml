@@ -35,11 +35,11 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image Source="Resource/Images/github.png" Margin="5,5"></Image>
+                <Image Source="Resource/Images/pc2.png" Margin="5,5"></Image>
 
                 <!--第二列-->
 
-                <TextBlock Grid.Column="1" Text="管理系统" Foreground="white" VerticalAlignment="Center" FontSize="15"></TextBlock>
+                <TextBlock Grid.Column="1" Text="生产管理系统" Foreground="white" VerticalAlignment="Center" FontSize="15"></TextBlock>
 
                 <!--第三列-->
 

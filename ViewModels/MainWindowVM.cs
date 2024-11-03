@@ -1,12 +1,6 @@
 ﻿using MonitorWPF.Models;
-using MonitorWPF.UserControls;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO.Ports;
 using System.Windows.Controls;
 
 namespace MonitorWPF.ViewModels
@@ -18,15 +12,34 @@ namespace MonitorWPF.ViewModels
         {
             #region 初始化环境监控数据
             EnvironmentList = new List<EnvironmentModel>()
+{
+    new EnvironmentModel(){EnItemName="温度",EnItemValue="26℃"},
+    new EnvironmentModel(){EnItemName="湿度",EnItemValue="50%"},
+    new EnvironmentModel(){EnItemName="气压",EnItemValue="1013hPa"},
+    new EnvironmentModel(){EnItemName="风速",EnItemValue="2m/s"},
+    new EnvironmentModel(){EnItemName="风向",EnItemValue="东南风"},
+    new EnvironmentModel(){EnItemName="PM2.5",EnItemValue="25ug/m³"},
+    new EnvironmentModel(){EnItemName="噪音",EnItemValue="50dB"},
+};
+
+            // PLC模拟
+            Task.Run(() =>
             {
-                new EnvironmentModel(){EnItemName="温度",EnItemValue="26℃"},
-                new EnvironmentModel(){EnItemName="湿度",EnItemValue="50%"},
-                new EnvironmentModel(){EnItemName="气压",EnItemValue="1013hPa"},
-                new EnvironmentModel(){EnItemName="风速",EnItemValue="2m/s"},
-                new EnvironmentModel(){EnItemName="风向",EnItemValue="东南风"},
-                new EnvironmentModel(){EnItemName="PM2.5",EnItemValue="25ug/m³"},
-                new EnvironmentModel(){EnItemName="噪音",EnItemValue="50dB"},
-            };
+                while (true)
+                {
+                    using (SerialPort serialPort = new("COM2", 9600, Parity.None, 8, StopBits.One))
+                    {
+                        serialPort.Open();
+                        Modbus.Device.IModbusMaster master = Modbus.Device.ModbusSerialMaster.CreateRtu(serialPort);
+                        ushort[] result = master.ReadHoldingRegisters(1, 0, 7);
+                        for (int i = 0; i < 7; i++)
+                        {
+                            // 使用 EnvironmentList[i] 的属性更新值
+                            EnvironmentList[i].EnItemValue = result[i].ToString();
+                        }
+                    }
+                }
+            });
             #endregion
             #region 初始化报警信息
             AlarmList = new List<AlarmModel>()
@@ -300,7 +313,9 @@ namespace MonitorWPF.ViewModels
         public List<MachineDataModel> MachineList
         {
             get { return _MachineList; }
-            set { _MachineList = value;
+            set
+            {
+                _MachineList = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("MachineList"));

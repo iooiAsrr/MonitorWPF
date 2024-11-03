@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MonitorWPF.Models
+﻿namespace MonitorWPF.Models
 {
     class WorkerModel
     {
@@ -15,7 +9,7 @@ namespace MonitorWPF.Models
         {
             get
             {
-                return OutWork*80/100;
+                return OutWork * 80 / 100;
             }
         }
     }
